@@ -1,1 +1,1 @@
-# PAM
+# PAM - Projektowanie Aplikacji Mobilnych
