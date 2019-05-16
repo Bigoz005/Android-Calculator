@@ -4,27 +4,30 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdvancedCalculatorActivity">
+    tools:context=".SimpleCalculatorActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
         android:layout_weight="100"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:orientation="vertical" >
 
         <TextView
             android:id="@+id/allText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:textColor="@color/colorPrimary"
+            android:layout_weight="3"
             android:textSize="20dp"/>
 
         <TextView
             android:id="@+id/resultText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="33dp"/>
+            android:layout_weight="2"
+            android:textSize="35dp"/>
+
+
     </LinearLayout>
 
 
@@ -35,20 +38,10 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/signBksp"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textAllCaps="false"
-            android:background="@drawable/button_style"
-            android:text="Backspace" />
-
-        <Button
             android:id="@+id/signC"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:background="@drawable/button_style"
+            android:layout_weight="1"
             android:text="C" />
 
         <Button
@@ -56,100 +49,24 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/button_style"
 
             android:text="+/-" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="50"
-        android:orientation="horizontal">
 
         <Button
-            android:id="@+id/signSin"
+            android:id="@+id/signBksp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textAllCaps="false"
-            android:text="sin" />
-
-        <Button
-            android:id="@+id/signCos"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textAllCaps="false"
-            android:text="cos" />
-
-        <Button
-            android:id="@+id/signTan"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textAllCaps="false"
-            android:text="tan" />
-
-        <Button
-            android:id="@+id/signLn"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/button_style"
-            android:textAllCaps="false"
-            android:text="ln" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="50"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/signSqrt"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textAllCaps="false"
-            android:text="sqrt" />
-
-        <Button
-            android:id="@+id/signPow2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textAllCaps="false"
-            android:text="x^2" />
-
-        <Button
-            android:id="@+id/signPowN"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textAllCaps="false"
-            android:text="x^y" />
-
-        <Button
-            android:id="@+id/signLog"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/button_style"
-            android:textAllCaps="false"
-            android:text="log" />
-
-
+            android:layout_weight="2"
+            android:text="Bksp"
+            android:textAllCaps="false" />
     </LinearLayout>
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
         android:layout_weight="50"
-        android:orientation="horizontal">
+        android:layout_height="0dp"
+        android:orientation="horizontal" >
 
         <Button
             android:id="@+id/sign7"
@@ -177,7 +94,6 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/button_style"
             android:text="/" />
 
     </LinearLayout>
@@ -185,9 +101,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
         android:layout_weight="50"
-        android:orientation="horizontal">
+        android:layout_height="0dp"
+        android:orientation="horizontal" >
 
         <Button
             android:id="@+id/sign4"
@@ -215,7 +131,6 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/button_style"
             android:text="*" />
 
     </LinearLayout>
@@ -223,9 +138,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
         android:layout_weight="50"
-        android:orientation="horizontal">
+        android:layout_height="0dp"
+        android:orientation="horizontal" >
 
         <Button
             android:id="@+id/sign1"
@@ -253,16 +168,22 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/button_style"
             android:text="-" />
     </LinearLayout>
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
         android:layout_weight="50"
-        android:orientation="horizontal">
+        android:layout_height="0dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/signDot"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="." />
 
         <Button
             android:id="@+id/sign0"
@@ -272,19 +193,10 @@
             android:text="0" />
 
         <Button
-            android:id="@+id/signDot"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/button_style"
-            android:text="." />
-
-        <Button
             android:id="@+id/signSum"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/button_style"
             android:text="=" />
 
         <Button
@@ -292,8 +204,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/button_style"
             android:text="+" />
     </LinearLayout>
 
-</LinearLayout>
+    </LinearLayout>

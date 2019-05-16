@@ -13,7 +13,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="8dp"
-        android:text="Informacje o aplikacji"
+        android:text="About"
         android:textSize="36sp"
         android:gravity="center"
         android:textStyle="bold"
@@ -27,12 +27,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="10dp"
-        android:text='Aplikacja została stworzona na potrzeby laboratrium z przedmiotu "Projektowanie aplikacji mobilnych" realizowanego w ramach bloku obieralnego "Technologie mobilne". Autorem aplikacji jest Karol Oleksy - student 3 roku informatyki na Wydziale Elektrotechniki Elektroniki Informatyki i Automatyki '
-        android:textSize="25sp"
         android:gravity="center"
+        android:text='StudCalc to aplikacja zrobiona w ramach zajęć "Projektowanie aplikacji mobilnych" na wydziale Elektrotechniki, Elektroniki, Informatyki i Automatyki. Michał Nawrot Łódź 2019.  '
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 

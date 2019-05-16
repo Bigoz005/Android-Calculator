@@ -5,22 +5,23 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.mariuszgromada.math.mxparser.*;
 
 public class AdvancedCalculatorActivity extends Activity {
 
     Button button0, button1, button2, button3, button4, button5,
-            button6, button7, button8, button9, buttonBscp, buttonC,
-            buttonChangeSign, buttonDiv, buttonMultiply, buttonMinus,
+            button6, button7, button8, button9, buttonC,
+            buttonChange, buttonBcsp, buttonDiv, buttonMultiply, buttonMinus,
             buttonPlus, buttonResult, buttonDot, buttonSin, buttonCos,
             buttonTan, buttonLn, buttonSqrt, buttonPow2, buttonPowN, buttonLog;
 
     TextView editText;
-    TextView allText;
+    TextView wholeText;
 
     int cButtonCounter = 0;
-    boolean digitalClicked = false;
+    boolean clicked = false;
     boolean blockOperations = false;
     boolean trygFunction = false;
 
@@ -30,11 +31,11 @@ public class AdvancedCalculatorActivity extends Activity {
         setContentView(R.layout.activity_advanced_calculator);
 
         editText = (TextView) findViewById(R.id.resultText);
-        allText = (TextView) findViewById(R.id.allText);
+        wholeText = (TextView) findViewById(R.id.allText);
 
-        buttonBscp = (Button) findViewById(R.id.signBksp);
+        buttonBcsp = (Button) findViewById(R.id.signBksp);
         buttonC = (Button) findViewById(R.id.signC);
-        buttonChangeSign = (Button) findViewById(R.id.signOperation);
+        buttonChange = (Button) findViewById(R.id.signOperation);
         buttonDiv = (Button) findViewById(R.id.signDiv);
         buttonMultiply = (Button) findViewById(R.id.signMultiple);
         buttonMinus = (Button) findViewById(R.id.signMinus);
@@ -184,29 +185,29 @@ public class AdvancedCalculatorActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                if (!editText.getText().toString().equals("Niepoprawne wyrażenie")) {
+                if (!editText.getText().toString().equals("Błąd")) {
                     if (trygFunction)
                         cButtonCounter = 0;
                     else if (!blockOperations) {
                         addNumberToAllText();
                         cButtonCounter = 0;
                     }
-                    if (allText.getText().toString().length() > 0) {
+                    if (wholeText.getText().toString().length() > 0) {
                         setResult();
-                        allText.setText("");
+                        wholeText.setText("");
                     }
                     blockOperations = false;
-                    digitalClicked = true;
+                    clicked = true;
                     trygFunction = false;
                 }
             }
         });
 
-        buttonBscp.setOnClickListener(new View.OnClickListener() {
+        buttonBcsp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (!editText.getText().toString().equals("Niepoprawne wyrażenie")) {
+                if (!editText.getText().toString().equals("Błąd")) {
                     if (!blockOperations) {
                         cButtonCounter = 0;
                         if (editText.getText().toString().length() > 0) {
@@ -217,16 +218,15 @@ public class AdvancedCalculatorActivity extends Activity {
             }
         });
 
-        buttonChangeSign.setOnClickListener(new View.OnClickListener() {
+        buttonChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (!editText.getText().toString().equals("Niepoprawne wyrażenie")) {
+                if (!editText.getText().toString().equals("Błąd")) {
                     if (!blockOperations) {
                         cButtonCounter = 0;
                         if (editText.getText().toString().length() > 0) {
                             editText.setText(String.valueOf(Double.parseDouble(editText.getText().toString()) * (-1.0)));
-                            //setResult();
                         }
                     }
                 }
@@ -240,7 +240,7 @@ public class AdvancedCalculatorActivity extends Activity {
                 cButtonCounter++;
                 if (cButtonCounter > 1) {
                     editText.setText("");
-                    allText.setText("");
+                    wholeText.setText("");
                     cButtonCounter = 0;
                     blockOperations = false;
                     trygFunction = false;
@@ -255,12 +255,12 @@ public class AdvancedCalculatorActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                if (!editText.getText().toString().equals("Niepoprawne wyrażenie")) {
+                if (!editText.getText().toString().equals("Błąd")) {
                     if (!trygFunction) {
                         if (editText.length() > 0) {
                             trygFunction = true;
-                            digitalClicked = false;
-                            allText.setText(allText.getText() + "sin(" + editText.getText() + ")");
+                            clicked = false;
+                            wholeText.setText(wholeText.getText() + "sin(" + editText.getText() + ")");
                             setResult();
                         }
                     }
@@ -274,12 +274,12 @@ public class AdvancedCalculatorActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                if (!editText.getText().toString().equals("Niepoprawne wyrażenie")) {
+                if (!editText.getText().toString().equals("Błąd")) {
                     if (!trygFunction) {
                         if (editText.length() > 0) {
                             trygFunction = true;
-                            digitalClicked = false;
-                            allText.setText(allText.getText() + "cos(" + editText.getText() + ")");
+                            clicked = false;
+                            wholeText.setText(wholeText.getText() + "cos(" + editText.getText() + ")");
                             setResult();
                         }
                     }
@@ -293,12 +293,12 @@ public class AdvancedCalculatorActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                if (!editText.getText().toString().equals("Niepoprawne wyrażenie")) {
+                if (!editText.getText().toString().equals("Błąd")) {
                     if (!trygFunction) {
                         if (editText.length() > 0) {
                             trygFunction = true;
-                            digitalClicked = false;
-                            allText.setText(allText.getText() + "tan(" + editText.getText() + ")");
+                            clicked = false;
+                            wholeText.setText(wholeText.getText() + "tan(" + editText.getText() + ")");
                             setResult();
                         }
                     }
@@ -310,12 +310,12 @@ public class AdvancedCalculatorActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                if (!editText.getText().toString().equals("Niepoprawne wyrażenie")) {
+                if (!editText.getText().toString().equals("Błąd")) {
                     if (!trygFunction) {
                         if (editText.length() > 0) {
                             trygFunction = true;
-                            digitalClicked = false;
-                            allText.setText(allText.getText() + "log10(" + editText.getText() + ")");
+                            clicked = false;
+                            wholeText.setText(wholeText.getText() + "log10(" + editText.getText() + ")");
                             setResult();
                         }
                     }
@@ -329,12 +329,12 @@ public class AdvancedCalculatorActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                if (!editText.getText().toString().equals("Niepoprawne wyrażenie")) {
+                if (!editText.getText().toString().equals("Błąd")) {
                     if (!trygFunction) {
                         if (editText.length() > 0) {
                             trygFunction = true;
-                            digitalClicked = false;
-                            allText.setText(allText.getText() + "ln(" + editText.getText() + ")");
+                            clicked = false;
+                            wholeText.setText(wholeText.getText() + "ln(" + editText.getText() + ")");
                             setResult();
                         }
                     }
@@ -348,12 +348,12 @@ public class AdvancedCalculatorActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                if (!editText.getText().toString().equals("Niepoprawne wyrażenie")) {
+                if (!editText.getText().toString().equals("Błąd")) {
                     if (!trygFunction) {
                         if (editText.length() > 0) {
                             trygFunction = true;
-                            digitalClicked = false;
-                            allText.setText(allText.getText() + "sqrt(" + editText.getText() + ")");
+                            clicked = false;
+                            wholeText.setText(wholeText.getText() + "sqrt(" + editText.getText() + ")");
                             setResult();
                         }
                     }
@@ -367,12 +367,12 @@ public class AdvancedCalculatorActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                if (!editText.getText().toString().equals("Niepoprawne wyrażenie")) {
+                if (!editText.getText().toString().equals("Błąd")) {
                     if (!trygFunction) {
                         if (editText.length() > 0) {
                             trygFunction = true;
-                            digitalClicked = false;
-                            allText.setText(allText.getText().toString() + editText.getText() + "^2");
+                            clicked = false;
+                            wholeText.setText(wholeText.getText().toString() + editText.getText() + "^2");
                             setResult();
                         }
                     }
@@ -386,12 +386,11 @@ public class AdvancedCalculatorActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                if (!editText.getText().toString().equals("Niepoprawne wyrażenie")) {
+                if (!editText.getText().toString().equals("Błąd")) {
                     if (!trygFunction) {
                         if (editText.length() > 0) {
-                            //trygFunction = true;
-                            digitalClicked = false;
-                            allText.setText(allText.getText().toString() + editText.getText() + "^");
+                            clicked = false;
+                            wholeText.setText(wholeText.getText().toString() + editText.getText() + "^");
                         }
                     }
                 }
@@ -400,10 +399,10 @@ public class AdvancedCalculatorActivity extends Activity {
         });
 
         if (savedInstanceState != null) {
-            String aText = savedInstanceState.getString("allText");
+            String aText = savedInstanceState.getString("wholeText");
             String eText = savedInstanceState.getString("editText");
-            digitalClicked = savedInstanceState.getBoolean("digitalClicked");
-            allText.setText(String.valueOf(aText));
+            clicked = savedInstanceState.getBoolean("clicked");
+            wholeText.setText(String.valueOf(aText));
             editText.setText(String.valueOf(eText));
         }
 
@@ -411,7 +410,7 @@ public class AdvancedCalculatorActivity extends Activity {
 
     public void setResult() {
 
-        String expression = allText.getText().toString();
+        String expression = wholeText.getText().toString();
 
         Expression e = new Expression(expression);
 
@@ -420,7 +419,11 @@ public class AdvancedCalculatorActivity extends Activity {
             editText.setText(result);
             blockOperations = false;
         } else {
-            editText.setText("Niepoprawne wyrażenie");
+            if (wholeText.getText().toString().contains("/0")) {
+                Toast.makeText(getApplicationContext(), "Nie można dzielić przez zero", Toast.LENGTH_LONG).show();
+            }
+
+            editText.setText("Błąd");
             blockOperations = true;
         }
 
@@ -432,81 +435,73 @@ public class AdvancedCalculatorActivity extends Activity {
             editText.setText(editText.getText().subSequence(0, editText.length() - 1));
         }
         if (!editText.getText().toString().startsWith("-"))
-            allText.setText(allText.getText() + editText.getText().toString());
+            wholeText.setText(wholeText.getText() + editText.getText().toString());
         else
-            allText.setText(allText.getText() + "(" + editText.getText().toString() + ")");
+            wholeText.setText(wholeText.getText() + "(" + editText.getText().toString() + ")");
     }
 
     public void addNumberToEditText(String number) {
 
-        if (!editText.getText().toString().equals("Niepoprawne wyrażenie")) {
+        if (!editText.getText().toString().equals("Błąd")) {
             if (!blockOperations && !trygFunction) {
-                if (digitalClicked) {
+                if (clicked) {
                     if (number.equals("0") && editText.getText().toString().equals("0")) {
 
                     } else
                         editText.setText(editText.getText() + number);
                 } else
                     editText.setText(number);
-                digitalClicked = true;
+                clicked = true;
             }
         }
     }
 
     public void executeOperation(String operation) {
 
-        int position;
+        int index;
 
         if (editText.getText().toString().contains("-"))
-            position = 2;
+            index = 2;
         else
-            position = 1;
-        if (!editText.getText().toString().equals("Niepoprawne wyrażenie")) {
-            if (digitalClicked && !trygFunction) {
-                System.out.println("3 IFFFF");
+            index = 1;
+        if (!editText.getText().toString().equals("Błąd")) {
+            if (clicked && !trygFunction) {
                 if (!blockOperations) {
                     addNumberToAllText();
                     cButtonCounter = 0;
-                    if (allText.getText().toString().length() > 0) {
-                        if (Character.isDigit(allText.getText().charAt(allText.getText().toString().length() - position))) {
+                    if (wholeText.getText().toString().length() > 0) {
+                        if (Character.isDigit(wholeText.getText().charAt(wholeText.getText().toString().length() - index))) {
                             setResult();
-                            allText.setText(allText.getText() + operation);
-                            digitalClicked = false;
+                            wholeText.setText(wholeText.getText() + operation);
+                            clicked = false;
                         }
                     }
                 }
-            } else if (allText.getText().toString().length() > 0) {
-                if (Character.isDigit(allText.getText().charAt(allText.getText().toString().length() - 1)) || allText.getText().toString().endsWith(")")) {
-                    System.out.println("2 IFFFF");
+            } else if (wholeText.getText().toString().length() > 0) {
+                if (Character.isDigit(wholeText.getText().charAt(wholeText.getText().toString().length() - 1)) || wholeText.getText().toString().endsWith(")")) {
                     if (!blockOperations) {
-                        allText.setText(allText.getText() + operation);
+                        wholeText.setText(wholeText.getText() + operation);
                         trygFunction = false;
-                        digitalClicked = false;
+                        clicked = false;
                     } else {
-                        allText.setText(allText.getText().toString().substring(0, allText.getText().toString().length() - 2) + operation);
+                        wholeText.setText(wholeText.getText().toString().substring(0, wholeText.getText().toString().length() - 2) + operation);
                         trygFunction = false;
-                        digitalClicked = false;
+                        clicked = false;
                     }
                 }
             }
-            if (editText.getText().toString().length() > 0 && allText.getText().toString().length() > 0) {
-                System.out.println("3 IFFFF");
-                allText.setText(allText.getText().toString().substring(0, allText.getText().length() - 1) + operation);
+            if (editText.getText().toString().length() > 0 && wholeText.getText().toString().length() > 0) {
+                wholeText.setText(wholeText.getText().toString().substring(0, wholeText.getText().length() - 1) + operation);
             }
         }
     }
 
-
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString("allText", allText.getText().toString());
+        outState.putString("wholeText", wholeText.getText().toString());
         outState.putString("editText", editText.getText().toString());
-        outState.putBoolean("digitalClicked", digitalClicked);
+        outState.putBoolean("clicked", clicked);
     }
 
-//    @Override
-//    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-//        super.onRestoreInstanceState(savedInstanceState);
-//    }
 }
