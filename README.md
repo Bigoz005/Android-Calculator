@@ -1,1 +1,1 @@
-# PAM - Projektowanie Aplikacji Mobilnych
+# StudCalc
